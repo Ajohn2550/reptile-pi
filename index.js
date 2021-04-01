@@ -12,7 +12,7 @@ function getTemp() {
     })
     .catch(console.error)
     .then(() => {
-        setTimeout(foo, 5000);
+        setTimeout(getTemp, 5000);
     });
 }
 
