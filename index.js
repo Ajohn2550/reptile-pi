@@ -11,7 +11,7 @@ function getTemp() {
         console.log(`Current Temperature: ${ctof(res.temperature)} F Humidity: ${res.humidity.toFixed(1)}%`);
     })
     .catch(console.error)
-    then(() => {
+    .then(() => {
         setTimeout(foo, 5000);
     });
 }
