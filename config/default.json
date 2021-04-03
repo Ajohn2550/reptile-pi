@@ -6,5 +6,8 @@
     "temperatures": {
         "day": 100,
         "night": 75
+    },
+    "pins": {
+        "ambient": 4
     }
 }

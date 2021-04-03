@@ -21,6 +21,7 @@
     "moment": "^2.29.1",
     "node-cron": "^3.0.0",
     "node-dht-sensor": "^0.4.3",
+    "rpi-gpio": "^2.1.7",
     "suncalc-tz": "^1.9.1"
   }
 }
