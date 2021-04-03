@@ -25,7 +25,7 @@ function getTemp() {
 }
 
 function loop() {
-    console.log(`Current Time: ${Date.now()} \nSunrize: ${sunrise}\nSunset: ${sunset}`)
+    console.log(`Current Time: ${moment().format()} \nSunrize: ${sunrise}\nSunset: ${sunset}`)
     let isDatytime = moment().isBetween(sunrise, sunset);
 
     if(isDatytime) {
@@ -36,4 +36,5 @@ function loop() {
     getTemp();
 }
 
+loop();
 cron.schedule('* * * * *', loop);
