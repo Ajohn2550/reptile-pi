@@ -1,4 +1,4 @@
-const { getSunrise, getSunset } = require('sunrise-sunset-js');
+const SunCalc = require('suncalc-tz');
 const moment = require('moment');
 const cron = require('node-cron');
 const sensor = require('node-dht-sensor').promises;
@@ -8,8 +8,9 @@ const lon = '-112.074036';
 const dayTemp = 100;
 const nightTemp = 75;
 
-const sunrise = getSunrise(lat, lon);
-const sunset = getSunset(lat, lon);
+const suntime = SunCalc.getTimes(Date.now(), lat, lon);
+const sunrise = suntime.sunrise;
+const sunset = suntime.sunset;
 
 sensor.setMaxRetries(5);
 sensor.initialize(11, 4);
@@ -36,5 +37,4 @@ function loop() {
     getTemp();
 }
 
-loop();
-cron.schedule('* * * * *', loop);
+cron.schedule('0,15,30,45 * * * * *', loop);

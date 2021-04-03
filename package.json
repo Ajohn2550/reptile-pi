@@ -20,6 +20,6 @@
     "moment": "^2.29.1",
     "node-cron": "^3.0.0",
     "node-dht-sensor": "^0.4.3",
-    "sunrise-sunset-js": "^2.2.1"
+    "suncalc-tz": "^1.9.1"
   }
 }
