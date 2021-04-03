@@ -25,6 +25,7 @@ function getTemp() {
 }
 
 function loop() {
+    console.log(`Current Time: ${Date.now()} \nSunrize: ${sunrise}\nSunset: ${sunset}`)
     let isDatytime = moment().isBetween(sunrise, sunset);
 
     if(isDatytime) {
