@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Ajohn2550/reptile-pi#readme",
   "dependencies": {
+    "config": "^3.3.6",
     "moment": "^2.29.1",
     "node-cron": "^3.0.0",
     "node-dht-sensor": "^0.4.3",
