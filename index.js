@@ -1,5 +1,6 @@
 const { getSunrise, getSunset } = require('sunrise-sunset-js');
 const moment = require('moment');
+const cron = require('node-cron');
 const sensor = require('node-dht-sensor').promises;
 
 const lat = '33.448376';
@@ -24,7 +25,6 @@ function getTemp() {
 }
 
 function loop() {
-    setInterval(loop, 5000);
     let isDatytime = moment().isBetween(sunrise, sunset);
 
     if(isDatytime) {
@@ -33,7 +33,6 @@ function loop() {
         console.log(`Nighttime - Temp set to: ${nightTemp}`);
     }
     getTemp();
-
 }
 
-loop();
+cron.schedule('* * * * *', loop);
