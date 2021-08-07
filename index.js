@@ -18,4 +18,4 @@ function loop() {
 }
 
 loop();
-cron.schedule('0,15,30,45 * * * * *', loop);
+cron.schedule('* * * * * *', loop);
