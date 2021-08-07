@@ -10,11 +10,12 @@ const tankAmbient = new AmbientSensor(11, config.get('pins.ambient'));
 
 
 function loop() {
-    if(suntime.isDayLight) {
+    if(sunTime.isDayLight) {
         console.log(`Daytime - Temp set to: ${config.get('temperatures.day')} Current Temp: ${tankAmbient.currentTemperature()}`);
     } else {
         console.log(`Nighttime - Temp set to: ${config.get('temperatures.night')} Current Temp: ${tankAmbient.currentTemperature()}`);
     }
 }
 
+loop();
 cron.schedule('0,15,30,45 * * * * *', loop);
