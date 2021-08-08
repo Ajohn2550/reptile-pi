@@ -4,8 +4,14 @@
         "longitude": -111.924090
     },
     "temperatures": {
-        "day": 100,
-        "night": 75
+        "day": {
+            "high": 100,
+            "low": 75
+        },
+        "night": {
+            "high": 75,
+            "low": 70
+        }
     },
     "relays": {
         "sun" : 17,
