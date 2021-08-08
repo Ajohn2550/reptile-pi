@@ -54,4 +54,4 @@ function shutdown() {
 server(tankRelays, { ambient: tankAmbient });
 
 cron.schedule('0,15,30,45 * * * * *', loop);
-process.on('exit', shutdown());
+process.on('exit', shutdown.bind());
