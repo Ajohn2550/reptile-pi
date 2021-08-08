@@ -15,10 +15,20 @@ function loop() {
         tankRelays.dayBask();
         console.log(`Daytime - Temp set to: ${config.get('temperatures.day')} Current Temp: ${tankAmbient.currentTemperature} Relay Status: ${tankRelays.status().main}`);
     } else {
-        tankRelays.nightHeat();
+        tankRelays.dayHeat();
         console.log(`Nighttime - Temp set to: ${config.get('temperatures.night')} Current Temp: ${tankAmbient.currentTemperature} Relay Status: ${tankRelays.status().main}`);
     }
 }
 
-loop();
+function startup() {
+    let currentSunTime = sunTime.getCurrentSunTime();
+
+    console.log(new Date());
+    console.log(sunTime.isDaylight);
+    console.dir(currentSunTime);
+    loop();
+}
+
+
+startup();
 cron.schedule('0,15,30,45 * * * * *', loop);
