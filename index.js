@@ -1,5 +1,6 @@
 const cron = require('node-cron');
 const config = require('config');
+const server = require('./lib/server/index');
 
 const SunTime = require('./lib/time/suntime');
 const AmbientSensor = require('./lib/sensors/ambient')
@@ -44,4 +45,13 @@ function loop() {
     console.log(currentLog);
 }
 
+function shutdown() {
+    tankRelays.off();
+    setInterval(_ => {
+        tankRelays.on();
+    }, 500);
+}
+server(tankRelays, { ambient: tankAmbient });
+
 cron.schedule('0,15,30,45 * * * * *', loop);
+process.on('exit', shutdown());
