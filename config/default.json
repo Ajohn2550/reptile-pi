@@ -7,6 +7,12 @@
         "day": 100,
         "night": 75
     },
+    "relays": {
+        "sun" : 17,
+        "heat" : 18,
+        "bask" : 27,
+        "disp" : 22 
+    },
     "pins": {
         "ambient": 4
     }
