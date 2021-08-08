@@ -1,7 +1,7 @@
 {
     "location": {
-        "latitude": 33.448376,
-        "longitude": -112.074036    
+        "latitude": 33.358760,
+        "longitude": -111.924090
     },
     "temperatures": {
         "day": 100,
@@ -11,7 +11,7 @@
         "sun" : 17,
         "heat" : 18,
         "bask" : 27,
-        "disp" : 22 
+        "disp" : 22
     },
     "pins": {
         "ambient": 4
