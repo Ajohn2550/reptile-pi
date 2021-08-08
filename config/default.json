@@ -5,8 +5,8 @@
     },
     "temperatures": {
         "day": {
-            "high": 100,
-            "low": 75
+            "high": 80,
+            "low": 78
         },
         "night": {
             "high": 75,

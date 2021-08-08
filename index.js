@@ -14,7 +14,7 @@ const ambientTemps = config.get("temperatures");
 function loop() {
     let currentLog = '';
     if(sunTime.isDaylight()) {
-        currentLog + `Day   - CT: ${tankAmbient.currentTemperature} `;
+        currentLog += `Day   - CT: ${tankAmbient.currentTemperature} `;
 
         if(tankAmbient.currentTemperature < ambientTemps.day.low) {
             tankRelays.dayHeat();
@@ -24,11 +24,11 @@ function loop() {
             tankRelays.dayCool();
         }
 
-        currentLog + `Relays: ${tankRelays.status().main} `;
-        currentLog + `Set: ${ambientTemps.day.low}-${ambientTemps.day.high}`;
+        currentLog += `Relays: ${tankRelays.status().main} `;
+        currentLog += `Set: ${ambientTemps.day.low}-${ambientTemps.day.high}`;
 
     } else {
-        currentLog + `Night - CT: ${tankAmbient.currentTemperature} `;
+        currentLog += `Night - CT: ${tankAmbient.currentTemperature} `;
 
         if(tankAmbient.currentTemperature < ambientTemps.night.low) {
             tankRelays.nightHeat();
@@ -38,8 +38,8 @@ function loop() {
             tankRelays.nightCool();
         }
 
-        currentLog + `Relays: ${tankRelays.status().main} `;
-        currentLog + `Set: ${ambientTemps.night.low}-${ambientTemps.night.high}`;
+        currentLog += `Relays: ${tankRelays.status().main} `;
+        currentLog += `Set: ${ambientTemps.night.low}-${ambientTemps.night.high}`;
     }
     console.log(currentLog);
 }
