@@ -11,7 +11,7 @@ const tankAmbient = new AmbientSensor(11, config.get('pins.ambient'));
 const tankRelays = new Relays(config.get('relays'));
 
 function loop() {
-    if(sunTime.isDayLight) {
+    if(sunTime.isDayLight()) {
         tankRelays.dayBask();
         console.log(`Daytime - Temp set to: ${config.get('temperatures.day')} Current Temp: ${tankAmbient.currentTemperature} Relay Status: ${tankRelays.status().main}`);
     } else {
@@ -24,7 +24,7 @@ function startup() {
     let currentSunTime = sunTime.getCurrentSunTime();
 
     console.log(new Date());
-    console.log(sunTime.isDaylight);
+    console.log(sunTime.isDaylight());
     console.dir(currentSunTime);
     loop();
 }
