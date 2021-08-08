@@ -12,11 +12,11 @@ const tankRelays = new Relays(config.get('relays'));
 
 function loop() {
     if(sunTime.isDayLight) {
-        console.log(`Daytime - Temp set to: ${config.get('temperatures.day')} Current Temp: ${tankAmbient.currentTemperature}`);
         tankRelays.dayBask();
+        console.log(`Daytime - Temp set to: ${config.get('temperatures.day')} Current Temp: ${tankAmbient.currentTemperature} Relay Status: ${tankRelays.status().main}`);
     } else {
-        console.log(`Nighttime - Temp set to: ${config.get('temperatures.night')} Current Temp: ${tankAmbient.currentTemperature}`);
         tankRelays.nightHeat();
+        console.log(`Nighttime - Temp set to: ${config.get('temperatures.night')} Current Temp: ${tankAmbient.currentTemperature} Relay Status: ${tankRelays.status().main}`);
     }
 }
 
