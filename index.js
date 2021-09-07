@@ -53,5 +53,5 @@ function shutdown() {
 }
 server(tankRelays, { ambient: tankAmbient });
 
-cron.schedule('0,15,30,45 * * * * *', loop);
+cron.schedule('* * * * *', loop);
 process.on('exit', shutdown.bind());
