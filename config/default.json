@@ -5,12 +5,12 @@
     },
     "temperatures": {
         "day": {
-            "high": 80,
-            "low": 78
+            "high": 95,
+            "low": 80
         },
         "night": {
-            "high": 75,
-            "low": 70
+            "high": 80,
+            "low": 75
         }
     },
     "relays": {
