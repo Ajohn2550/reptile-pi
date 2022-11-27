@@ -2,15 +2,30 @@ const cron = require('node-cron');
 const config = require('config');
 const server = require('./lib/server/index');
 
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+
 const SunTime = require('./lib/time/suntime');
 const AmbientSensor = require('./lib/sensors/ambient');
 const Relays = require('./lib/relays');
 
+const adapter = new FileSync('./storage/db.json');
+const db = low(adapter);
 const sunTime = new SunTime(config.get('location.latitude'), config.get('location.longitude'));
 const tankAmbient = new AmbientSensor(11, config.get('pins.ambient'));
 const tankRelays = new Relays(config.get('relays'));
 
 const ambientTemps = config.get("temperatures");
+
+db.defaults({
+    history: [ {
+        stamp: Date.now().toString(),
+        relays: tankRelays.status(),
+        ambientTemp: tankAmbient.currentTemperature,
+        ambientHumidity: tankAmbient.currentHumidity
+    }]
+});
+
 
 function loop() {
     let currentLog = '';
@@ -51,7 +66,7 @@ function shutdown() {
         tankRelays.on();
     }, 500);
 }
-server(tankRelays, { ambient: tankAmbient });
+server(tankRelays, { ambient: tankAmbient }, db);
 
 cron.schedule('*/5 * * * *', loop);
 process.on('exit', shutdown.bind());
