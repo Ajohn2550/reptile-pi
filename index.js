@@ -3,7 +3,7 @@ const config = require('config');
 const server = require('./lib/server/index');
 
 const SunTime = require('./lib/time/suntime');
-const AmbientSensor = require('./lib/sensors/ambient')
+const AmbientSensor = require('./lib/sensors/ambient');
 const Relays = require('./lib/relays');
 
 const sunTime = new SunTime(config.get('location.latitude'), config.get('location.longitude'));
