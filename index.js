@@ -57,5 +57,5 @@ function shutdown() {
 server(tankRelays, { ambient: tankAmbient }, history);
 
 cron.schedule('*/5 * * * *', loop);
-cron.schedule('0 0 * * *', history.rotate);
+cron.schedule('*/5 * * * *', history.rotate);
 process.on('exit', shutdown.bind());
