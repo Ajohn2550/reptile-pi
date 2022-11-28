@@ -106,3 +106,6 @@ dist
 config/
 !config/default.json
 !config/default-0.json
+
+storage/
+!storage/origin.js
