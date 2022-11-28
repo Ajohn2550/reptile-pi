@@ -46,6 +46,7 @@ function loop() {
     }
     console.log(currentLog);
     history.log(tankRelays.status(), { ambient: { temp: tankAmbient.currentTemperature, humidity: tankAmbient.currentHumidity }});
+    history.rotate();
 }
 
 function shutdown() {
@@ -56,9 +57,5 @@ function shutdown() {
 }
 server(tankRelays, { ambient: tankAmbient }, history);
 
-function rotateCron() {
-    history.rotate();
-}
 cron.schedule('*/5 * * * *', loop);
-cron.schedule('*/5 * * * *', rotateCron);
 process.on('exit', shutdown.bind());
