@@ -5,10 +5,12 @@ const server = require('./lib/server/index');
 const SunTime = require('./lib/time/suntime');
 const AmbientSensor = require('./lib/sensors/ambient');
 const Relays = require('./lib/relays');
+const History = require('./lib/history');
 
 const sunTime = new SunTime(config.get('location.latitude'), config.get('location.longitude'));
 const tankAmbient = new AmbientSensor(11, config.get('pins.ambient'));
 const tankRelays = new Relays(config.get('relays'));
+const history = new History();
 
 const ambientTemps = config.get("temperatures");
 
@@ -43,6 +45,7 @@ function loop() {
         currentLog += `Set: ${ambientTemps.night.low}-${ambientTemps.night.high}`;
     }
     console.log(currentLog);
+    history.log(tankRelays.status(), { ambient: { temp: tankAmbient.currentTemperature, humidity: tankAmbient.currentHumidity }});
 }
 
 function shutdown() {
@@ -51,7 +54,8 @@ function shutdown() {
         tankRelays.on();
     }, 500);
 }
-server(tankRelays, { ambient: tankAmbient });
+server(tankRelays, { ambient: tankAmbient }, history);
 
 cron.schedule('*/5 * * * *', loop);
+cron.schedule('0 0 * * *', history.rotate());
 process.on('exit', shutdown.bind());
