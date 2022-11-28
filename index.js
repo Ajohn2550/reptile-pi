@@ -1,16 +1,16 @@
+import { Low, JSONFile } from 'lowdb';
+
 const cron = require('node-cron');
 const config = require('config');
 const server = require('./lib/server/index');
 
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
 
 const SunTime = require('./lib/time/suntime');
 const AmbientSensor = require('./lib/sensors/ambient');
 const Relays = require('./lib/relays');
 
-const adapter = new FileSync('./storage/db.json');
-const db = low(adapter);
+const adapter = new JSONFile('./storage/db.json');
+const db = new Low(adapter);
 const sunTime = new SunTime(config.get('location.latitude'), config.get('location.longitude'));
 const tankAmbient = new AmbientSensor(11, config.get('pins.ambient'));
 const tankRelays = new Relays(config.get('relays'));
