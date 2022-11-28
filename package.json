@@ -2,6 +2,7 @@
   "name": "reptile-pi",
   "version": "1.0.0",
   "description": "Node JS app for monitoring and controlling reptile vivariums",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
