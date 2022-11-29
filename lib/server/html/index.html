@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <section id="graphs">
+            <div>
+                <canvas id="today"></canvas>
+            </div>
+        </section>
+        <script>
+            fetch('/api/history', {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                /*
+                const labels = history.map(hist => {
+                const ts = new Date(parseInt(hist.timeStamp, 10));
+                    return `${ts.getFullYear()}/${ts.getMonth() + 1}/${ts.getDate()} ${ts.getHours()}:${ts.getMinutes()}`;
+                });
+
+                const ctx = document.getElementById('today');
+                const ctx2 = document.getElementById('lights');
+
+                new Chart(ctx, {
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            type: 'line',
+                            label: 'Temperature',
+                            data: history.map(hist => hist.temps.ambient.temp),
+                            borderWidth: 1
+                        },{
+                            type: 'line',
+                            label: 'Humidity',
+                            data: history.map(hist => hist.temps.ambient.humidity),
+                            borderWidth: 1
+                        },{
+                            type: 'bar',
+                            label: 'Sun',
+                            data: history.map(hist => hist.relays.sun),
+                        },{
+                            type: 'bar',
+                            label: 'Heat',
+                            data: history.map(hist => hist.relays.heat)
+                        },{
+                            type: 'bar',
+                            label: 'Bask',
+                            data: history.map(hist => hist.relays.bask)
+                        },{
+                            type: 'bar',
+                            label: 'Display',
+                            data: history.map(hist => hist.relays.disp)
+                        }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index'
+                        }
+                    }
+                });
+                */
+            });
+          </script>
+    </body>
+</html>
