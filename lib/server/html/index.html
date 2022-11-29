@@ -16,8 +16,7 @@
             })
             .then(res => res.json())
             .then(res => {
-                console.log(res);
-                /*
+                let history = res.history;
                 const labels = history.map(hist => {
                 const ts = new Date(parseInt(hist.timeStamp, 10));
                     return `${ts.getFullYear()}/${ts.getMonth() + 1}/${ts.getDate()} ${ts.getHours()}:${ts.getMinutes()}`;
@@ -63,7 +62,6 @@
                         }
                     }
                 });
-                */
             });
           </script>
     </body>
